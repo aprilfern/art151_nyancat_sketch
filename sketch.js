@@ -5,7 +5,7 @@
 //please add a comment to what was fixed or adjusted for each one. Note that you may need to delete stuff. 
 let nyan;
 let noNyan;
- nyanBg; 
+// nyanBg // Bug 1: Unused variable nyanBg, which was declared incorrectly
 let variable; 
 let circles = [];
 
@@ -20,7 +20,7 @@ let color = [
   [150, 150, 150], // grey 
   [100, 100, 100], // darker grey 
   [255, 182, 193], // pink 
-  [255, , 180], // hot pink 
+  [255, 105, 180], // hot pink  bug 2: (second number missing)
   [255, 228, 181], // beige 
   [0, 0, 0],       // black 
   [255, 255, 255]  // white 
@@ -28,32 +28,29 @@ let color = [
 
 let playbackRate = 1.0;
 
-
 async function setup() {
   createCanvas(400, 400);
-background(noNyan);
-   nyan = await loadSound('media/NyanCat.mp3');
-  noNyan = await loadImage('media/NyanCatless.gif')
-  sprinkles = await loadImage('sprinkles.jpg'); 
- 
+  background(noNyan);
+  nyan = await loadSound('medias/nyanCat.mp3'); // Bug 4: folder path was incorrect
+  noNyan = await loadImage('medias/nyancatless.gif') // Bug 5: folder path was incorrect
+  //sprinkles = await loadImage('sprinkles.jpg'); // Bug 6: Image does not exist
 }
 
 function draw() {
-
   
   // Draw all circles
-  for (let circle of circels) { 
+  for (let circle of circles) { // Bug 7: Circles mispelling
     fill(circle.colors); 
-    elipse(circle.x, circle.y, 50, 50); 
+    ellipse(circle.x, circle.y, 50, 50); // Bug 14: elipse instead of ellipse
   }
   
 
   if (mouseIsPressed) {
-    let c = random(colors); 
-    let new Circle = { 
-      x: MouseX, 
+    let c = random(color); // Bug 8: changed it to color instead of colors
+    let newCircle = { // Bug 3: 
+      x: mouseX, // Bug 9: mouse was capitalized
       y: mouseY,
-      colors: color(c(0), c[1], c[2]) 
+      color: color(c[0], c[1], c[2]) // Bug 10: Says colors instead of color and (0) should be [0]
     };
     circles.push(newCircle);
   }
@@ -67,28 +64,26 @@ function mousePressed() {
     color: color(c[0], c[1], c[2])
   };
   circles.push(newCircle);
-  nayn.setVolume(0.5); 
-  nyan.rate(playbakRate); 
-   nyan.loop();
+  nyan.setVolume(0.5); // Bug 11: says nayn instead of nyan
+  nyan.rate(playbackRate); // Bug 12: playbak instead of playback
+  nyan.loop();
   
 }
 function mouseReleased(){
   nyan.stop();
 
-
+} // Bug 13: Missing closing bracket
 
 function keyPressed() {
-  if (keycode = UP_ARROW); { 
-    playBackRate += 0.1; 
+  if (keyCode === UP_ARROW) { // Bug 15: keycode instead of keyCode
+    playbackRate += 0.1; 
     nyan.rate(playbackRate); 
-  } else  (keyCode == Down_Arrow) { 
+  } else if (keyCode === Down_Arrow) { 
     playbackRate = max(0.1, playbackRate - 0.2); 
     nyan.rate(playbackRate);
   } else if (keyCode === LEFT_ARROW) { 
     playbackRate = playbackRate * 1; 
-    nyan.rate(playBackRate); 
+    //
+    nyan.rate(playbackRate); 
   }
-}
-}
-} 
 }
