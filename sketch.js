@@ -47,7 +47,7 @@ function draw() {
   
 
   if (mouseIsPressed) {
-    let c = random(color); // Bug 8: changed it to color instead of colors
+    let c = random(colors); 
     let newCircle = { // Bug 3: said new Circle instead of newCircle
       x: mouseX, // Bug 9: mouse was capitalized
       y: mouseY,
@@ -58,7 +58,7 @@ function draw() {
 }
 
 function mousePressed() {
-  let c = random(color); // Bug: says colors instead of color
+  let c = random(colors); // Bug: says colors instead of color
   let newCircle = {
     x: mouseX,
     y: mouseY,
