@@ -1,3 +1,4 @@
+// Akshita Addepalli and someone else
 //ADD names of group members at top of sketch 
 //Please have each group member DUPLICATE THIS SKETCH and have it saved in your accounts
 //Everyone will be submitting their versions individually 
@@ -30,24 +31,24 @@ let playbackRate = 1.0;
 
 async function setup() {
   createCanvas(400, 400);
-  background(noNyan);
   nyan = await loadSound('medias/nyanCat.mp3'); // Bug 4: folder path was incorrect
   noNyan = await loadImage('medias/nyancatless.gif') // Bug 5: folder path was incorrect
   //sprinkles = await loadImage('sprinkles.jpg'); // Bug 6: Image does not exist
+  background(noNyan); // Bug: Move background change after the images load
 }
 
 function draw() {
   
   // Draw all circles
   for (let circle of circles) { // Bug 7: Circles mispelling
-    fill(circle.colors); 
+    fill(circle.color); // Bug: says colors instead of color
     ellipse(circle.x, circle.y, 50, 50); // Bug 14: elipse instead of ellipse
   }
   
 
   if (mouseIsPressed) {
     let c = random(color); // Bug 8: changed it to color instead of colors
-    let newCircle = { // Bug 3: 
+    let newCircle = { // Bug 3: said new Circle instead of newCircle
       x: mouseX, // Bug 9: mouse was capitalized
       y: mouseY,
       color: color(c[0], c[1], c[2]) // Bug 10: Says colors instead of color and (0) should be [0]
@@ -57,7 +58,7 @@ function draw() {
 }
 
 function mousePressed() {
-  let c = random(colors);
+  let c = random(color); // Bug: says colors instead of color
   let newCircle = {
     x: mouseX,
     y: mouseY,
@@ -67,23 +68,29 @@ function mousePressed() {
   nyan.setVolume(0.5); // Bug 11: says nayn instead of nyan
   nyan.rate(playbackRate); // Bug 12: playbak instead of playback
   nyan.loop();
-  
 }
+
 function mouseReleased(){
   nyan.stop();
 
 } // Bug 13: Missing closing bracket
 
 function keyPressed() {
+  // Bug: says == instead of ===
+  // Bug: says keycode instead of keyCode
+  // Bug: Got rid of random semicolon
   if (keyCode === UP_ARROW) { // Bug 15: keycode instead of keyCode
     playbackRate += 0.1; 
     nyan.rate(playbackRate); 
-  } else if (keyCode === Down_Arrow) { 
+  } else if (keyCode === DOWN_ARROW) { // Bug: Missing if in else if
+    //Bug: down_arrow instead of DOWN_ARROW
+    // Bug: says == instead of ===
     playbackRate = max(0.1, playbackRate - 0.2); 
     nyan.rate(playbackRate);
   } else if (keyCode === LEFT_ARROW) { 
     playbackRate = playbackRate * 1; 
-    //
+    // Bug: says playBackRate instead of playbackRate
     nyan.rate(playbackRate); 
   }
 }
+// Bug: Unnecessary closing brackets
