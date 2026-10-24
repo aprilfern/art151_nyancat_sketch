@@ -1,4 +1,4 @@
-// Akshita Addepalli and someone else
+// Akshita Addepalli and Aryan Patel
 //ADD names of group members at top of sketch 
 //Please have each group member DUPLICATE THIS SKETCH and have it saved in your accounts
 //Everyone will be submitting their versions individually 
@@ -11,7 +11,7 @@ let variable;
 let circles = [];
 
 
-let color = [
+let colors = [
  [255, 0, 0],     // red 
   [255, 165, 0],   // orange 
   [255, 255, 0],   // yellow
