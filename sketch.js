@@ -7,7 +7,7 @@
 let nyan;
 let noNyan;
 // nyanBg // Bug 1: Unused variable nyanBg, which was declared incorrectly
-let variable; 
+//let variable; //Bug : Unused variable, delete
 let circles = [];
 
 
