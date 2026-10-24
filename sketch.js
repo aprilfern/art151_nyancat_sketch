@@ -34,10 +34,10 @@ async function setup() {
   nyan = await loadSound('medias/nyanCat.mp3'); // Bug 4: folder path was incorrect
   noNyan = await loadImage('medias/nyancatless.gif') // Bug 5: folder path was incorrect
   //sprinkles = await loadImage('sprinkles.jpg'); // Bug 6: Image does not exist
-  background(noNyan); // Bug: Move background change after the images load
 }
 
 function draw() {
+  background(noNyan); // Bug: Move background change into draw
   
   // Draw all circles
   for (let circle of circles) { // Bug 7: Circles mispelling
