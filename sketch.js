@@ -34,6 +34,7 @@ async function setup() {
   nyan = await loadSound('medias/nyanCat.mp3'); // Bug 4: folder path was incorrect
   noNyan = await loadImage('medias/nyancatless.gif') // Bug 5: folder path was incorrect
   //sprinkles = await loadImage('sprinkles.jpg'); // Bug 6: Image does not exist
+  
 }
 
 function draw() {
@@ -58,6 +59,7 @@ function draw() {
 }
 
 function mousePressed() {
+  nyan.play(); // Bug: Was missing so no audio was playing when mouse pressed
   let c = random(colors); // Bug: says colors instead of color
   let newCircle = {
     x: mouseX,
